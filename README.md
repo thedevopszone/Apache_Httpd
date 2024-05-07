@@ -69,3 +69,11 @@ resolvectl flush-caches
 
 ```
 
+
+## Rhel
+
+```
+
+```
+
+
