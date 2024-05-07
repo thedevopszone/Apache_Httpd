@@ -73,7 +73,37 @@ resolvectl flush-caches
 ## Rhel
 
 ```
+dnf install httpd
 
 ```
+
+```
+<VirtualHost *:80>
+    ServerName iam-mon-e.dg-nexolution.de
+    Redirect permanent / https://iam-mon-e.dg-nexolution.de/
+</VirtualHost>
+
+<VirtualHost *:443>
+    ServerName iam-mon-e.dg-nexolution.de
+
+    ProxyPreserveHost On
+    ProxyRequests On
+    SSLEngine On
+    SSLProxyEngine On
+
+    ProxyPass / http://localhost:3000/
+    ProxyPassReverse / http://localhost:3000/
+
+    SSLCertificateFile    /etc/ssl/wildcard-dg-nexolution.crt
+    SSLCertificateKeyFile /etc/ssl/wildcard-dg-nexolution.key
+    SSLCACertificateFile  /etc/ssl/wildcard-dg-nexolution.cc
+
+#    ErrorLog ${APACHE_LOG_DIR}/grafana_error.log
+#    CustomLog ${APACHE_LOG_DIR}/grafana_access.log combined
+</VirtualHost>
+
+
+```
+
 
 
