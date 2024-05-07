@@ -75,6 +75,10 @@ resolvectl flush-caches
 ```
 dnf install httpd
 
+sudo yum install mod_ssl
+sudo a2enmod ssl
+sudo apachectl restart
+
 ```
 
 ```
